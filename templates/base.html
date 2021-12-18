@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="/static/cv.css">
+</head>
+<body>
+    <hr>
+    {% block content %} welcome {% endblock %}
+    <hr>
+    {% include 'footer.html' %}
+</body>
+</html>
