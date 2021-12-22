@@ -1,32 +1,39 @@
-<!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="../static/cv.css">
-    <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
-    <title>Contact Form</title>
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="/static/cv.css">
 </head>
 <body>
+ {% include 'Header.html' %}
+    <hr>
+    {% block content %}
     <h1>Get in Touch</h1>
+    <h2> Hi, {{ session.user_nickname }}</h2>
     <form action="" name = "ContactForm" onsubmit = "return(validateEmail());">
 
         <label for="fname">First Name</label>
         <input type="text" id="fname" name="firstname" >
-    
+
         <label for="lname">Last Name</label>
         <input type="text" id="lname" name="lastname" >
-    
+
         <label for="Email">Email</label>
         <input type="Email" id="Email" name="Email" > <br>
         <br>
 
         <label for="message">Type your message here</label>
         <textarea id="message" name="message" placeholder="Write something.." style="height:200px"></textarea>
-    
+
         <input type="submit" value="Submit">
-    
+
       </form>
+
+
+    {% endblock %}
+    <hr>
+    {% include 'footer.html' %}
 </body>
 </html>
+
