@@ -31,7 +31,9 @@ def assignment8_func():
 def assignment9_func():
     users = {'user1': {'name': 'Ron', 'age': '27', 'email': 'ron@gmail.com'},
              'user2': {'name': 'Ori', 'age': '30', 'email': 'ori123@gmail.com'},
-             'user3': {'name': 'ofir', 'age': '18', 'email': 'fifi@gmail.com'}}
+             'user3': {'name': 'ofir', 'age': '18', 'email': 'fifi@gmail.com'},
+             'user4': {'name': 'Shahar', 'age': '23', 'email': 'shahar@gmail.com'},
+             'user5': {'name': 'Tali', 'age': '50', 'email': 'tali@gmail.com'}}
 
     if request.method == 'GET':
         if 'user_key' in request.args:

@@ -4,9 +4,12 @@
 {% endblock %}
 
 {% block content %}
-    {{ super() }}
 {% set page_name='assigment8' %}
-
+    {% if session.user_nickname %}
+                <h3> Welcome {{ session.user_nickname }} !</h3>
+    {% else %}
+              <h1>Welcome guest</h1>
+    {% endif %}
     <h1> My Hobbies  </h1>
     <h2> Name : {{ profile.name | default('unknown', true | upper() ) }} {{  profile.second_name | default('unknown', true | upper() ) }} </h2>
     <h2>Hobbies:</h2>
