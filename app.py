@@ -1,7 +1,17 @@
 from flask import Flask, redirect, url_for , render_template, request , session
+from intract_with_DB import interact_db
+import mysql.connector
+
+
 
 app = Flask(__name__)
 app.secret_key= '123'
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="root",
+  password="ywa2Znzk!"
+)
 
 
 if __name__ == '__main__':
@@ -71,6 +81,10 @@ def logout_func():
     session['user_password'] = ''
     return render_template('assignment9.html')
 
+
+## assignment10
+from pages.assignment10.assignment10 import assignment10
+app.register_blueprint(assignment10)
 
 
 
