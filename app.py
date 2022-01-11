@@ -1,6 +1,7 @@
-from flask import Flask, redirect, url_for , render_template, request , session
+from flask import Flask, redirect, url_for, render_template, request, session, jsonify
 from intract_with_DB import interact_db
 import mysql.connector
+import  requests
 
 
 
@@ -86,5 +87,31 @@ def logout_func():
 from pages.assignment10.assignment10 import assignment10
 app.register_blueprint(assignment10)
 
+##assignment11
+@app.route('/assignment11/users', methods=['GET'])
+def get_users():
+    query = "select * from users"
+    query_result = interact_db(query=query, query_type='fetch')
+    response = jsonify(query_result)
+    return response
 
+
+@app.route('/assignment11/outer_source',  methods=['GET', 'POST'])
+def assignment11_outer_source():
+    return render_template('assignment11/outer_source.html')
+
+
+@app.route('/outer_source_front', methods=['post'])
+def outer_source_front_func():
+     user_id = request.form['user_id']
+     return render_template('assignment11/outer_source.html', id=user_id)
+
+@app.route('/outer_source_backend')
+def req_backend_func():
+    if request.args['user_id'] != '':
+        id = request.args['user_id']
+        res = requests.get('https://reqres.in/api/users/%s' % id)
+        user = res.json()
+        return render_template('assignment11/outer_source.html', user=user)
+    return render_template('assignment11/outer_source.html')
 
